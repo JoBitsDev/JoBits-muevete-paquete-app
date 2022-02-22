@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
-
+import 'package:muevete_paquete/config/themes/theme_light.dart';
+import 'package:muevete_paquete/utils/ui/ui_SelectOperation/select_operation.dart';
 
 void main() {
   initDataBase();
@@ -9,13 +10,11 @@ void main() {
     //translations: Spanish(),
     locale: Locale('es', 'ES'),
     debugShowCheckedModeBanner: false,
-    //home: WelcomeUI(),
-    //theme: ThemeLight.lightTheme,
+    home: SelectOperation(),
+    theme: ThemeLight.lightTheme,
   ));
 }
 
-void initModules() async {
-}
+void initModules() async {}
 
-void initDataBase() async {
-}
+void initDataBase() async {}
