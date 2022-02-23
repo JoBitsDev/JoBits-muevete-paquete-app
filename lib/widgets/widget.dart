@@ -141,8 +141,6 @@ class WhatsappButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 60,
-      width: 60,
       child: FloatingActionButton(
         child: const FaIcon(FontAwesomeIcons.whatsapp),
         backgroundColor: Colors.green.shade800,
@@ -158,6 +156,53 @@ class WhatsappButton extends StatelessWidget {
             throw 'Could not launch $url';
           }
         },
+      ),
+    );
+  }
+}
+
+class ServicesHorizontal extends StatelessWidget {
+  const ServicesHorizontal({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 100,
+      child: ListView(
+        padding: EdgeInsets.symmetric(horizontal: 300.0, vertical: 10.0),
+        children: [
+          Row(
+            children: <Widget>[
+              Expanded(
+                child: SizedBox(
+                  height: 100.0,
+                  width: 80.0,
+                  child: Card(
+                    color: Colors.blue,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50.0),
+                    ),
+                    child: Text('Servicio 1', textAlign: TextAlign.center),
+                  ),
+                ),
+              ),
+              Spacer(),
+              Expanded(
+                child: SizedBox(
+                  height: 100.0,
+                  width: 80.0,
+                  child: Card(
+                    color: Colors.blue,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50.0),
+                    ),
+                    child: Text('Servicio 2', textAlign: TextAlign.center),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }

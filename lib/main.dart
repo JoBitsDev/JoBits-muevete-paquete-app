@@ -8,7 +8,7 @@ void main() {
   initModules();
   runApp(GetMaterialApp(
     //translations: Spanish(),
-    locale: Locale('es', 'ES'),
+    locale: const Locale('es', 'ES'),
     debugShowCheckedModeBanner: false,
     home: SelectOperation(),
     theme: ThemeLight.lightTheme,

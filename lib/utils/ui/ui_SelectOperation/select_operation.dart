@@ -11,8 +11,8 @@ class SelectOperation extends GetView<SelectOperationController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        titleSpacing: 0,
-        actions: <Widget>[
+        titleSpacing: 10.0,
+        actions: const <Widget>[
           AssetImages(),
         ],
       ),
@@ -20,15 +20,22 @@ class SelectOperation extends GetView<SelectOperationController> {
       body: Center(
         child: Column(
           children: const <Widget>[
+            SizedBox(height: 10.0),
             ElementsBody(),
             Divider(),
-            Text('Descripción Plataforma(Texto)'),
+            Text(
+              'Laboris nulla Lorem veniam cillum et enim consectetur. Proident incididunt in nulla dolor aliqua. Dolore sit officia eiusmod eiusmod qui nisi. Magna culpa et amet incididunt. Pariatur adipisicing in nisi do deserunt aliqua excepteur anim excepteur excepteur mollit reprehenderit veniam. Anim labore veniam nostrud ut anim amet adipisicing mollit officia sit ea.',
+              textAlign: TextAlign.justify,
+            ),
             SizedBox(height: 80.0),
             ButtonBody(),
+            SizedBox(height: 30.0),
             Divider(
               color: Colors.black,
             ),
             TextBody(),
+            SizedBox(height: 20.0),
+            ServicesHorizontal(),
           ],
         ),
       ),
