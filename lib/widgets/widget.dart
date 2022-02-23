@@ -2,7 +2,9 @@
 // FlatButton, OutlineButton, Divider, CircularLoader, etc which we can use
 // throughout our application then that kind of customization widgets
 // we can add inside the file widget.dart which will be present inside the folder widgets
+
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'package:url_launcher/url_launcher.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -61,17 +63,22 @@ class DrawerMenu extends StatelessWidget {
           ),
           ListTile(
             leading: const Icon(Icons.pages, color: Colors.blue),
-            title: const Text('Elements'),
+            title: const Text('Gestionar Paquete'),
             onTap: () {},
           ),
           ListTile(
             leading: const Icon(Icons.pages, color: Colors.blue),
-            title: const Text('Elements'),
+            title: const Text('Gestionar Viaje'),
             onTap: () {},
           ),
           ListTile(
             leading: const Icon(Icons.pages, color: Colors.blue),
-            title: const Text('Elements'),
+            title: const Text('Nuevo Viaje'),
+            onTap: () {},
+          ),
+          ListTile(
+            leading: const Icon(Icons.pages, color: Colors.blue),
+            title: const Text('Publicar Paquete'),
             onTap: () {},
           ),
         ],
@@ -115,7 +122,9 @@ class ButtonBody extends StatelessWidget {
         elevation: 0.0,
         color: Colors.blue,
         textColor: Colors.white,
-        onPressed: () {});
+        onPressed: () {
+          Get.to(LoginForm());
+        });
   }
 }
 
@@ -161,8 +170,8 @@ class WhatsappButton extends StatelessWidget {
   }
 }
 
-class ServicesHorizontal extends StatelessWidget {
-  const ServicesHorizontal({Key? key}) : super(key: key);
+class CardsServicesHorizontal extends StatelessWidget {
+  const CardsServicesHorizontal({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -204,6 +213,133 @@ class ServicesHorizontal extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+}
+
+class LoginForm extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+
+    return Scaffold(
+      backgroundColor: Colors.blue,
+      body: Column(
+        children: <Widget>[
+          Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[],
+          ),
+          SizedBox(
+            height: 50.0,
+          ),
+          SafeArea(
+              child: Container(
+            width: size.width * 0.40,
+            child: Column(
+              children: <Widget>[
+                Text('Logo'),
+              ],
+            ),
+          )),
+          SizedBox(
+            height: 70.0,
+          ),
+          Center(
+            child: Container(
+              width: size.width * 0.20,
+              margin: EdgeInsets.symmetric(horizontal: 40.0),
+              padding: EdgeInsets.symmetric(vertical: 20.0),
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(5.0),
+                  boxShadow: <BoxShadow>[
+                    BoxShadow(
+                        color: Colors.black26,
+                        blurRadius: 3.0,
+                        offset: Offset(0.0, 5.0),
+                        spreadRadius: 3.0)
+                  ]),
+              child: Column(
+                children: <Widget>[
+                  Text(
+                    'Login',
+                    style: TextStyle(fontSize: 20.0),
+                  ),
+                  SizedBox(
+                    height: 60.0,
+                  ),
+                  _name(),
+                  SizedBox(height: 30.0),
+                  _password(),
+                  SizedBox(height: 30.0),
+                  _buttonLogin(),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buttonLogin() {
+    return MaterialButton(
+        child: Container(
+          padding: EdgeInsets.symmetric(horizontal: 80.0, vertical: 15.0),
+          child: Text('Login'),
+        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
+        elevation: 0.0,
+        color: Colors.blue,
+        textColor: Colors.white,
+        onPressed: () {});
+  }
+
+  Widget _name() {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 20.0),
+      child: TextField(
+        keyboardType: TextInputType.name,
+        decoration: InputDecoration(
+          icon: Icon(Icons.account_circle_outlined, color: Colors.blue),
+          hintText: 'Nombre',
+          labelText: 'Usuario',
+        ),
+      ),
+    );
+  }
+
+  Widget _password() {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 20.0),
+      child: TextField(
+        obscureText: true,
+        decoration: InputDecoration(
+          icon: Icon(Icons.lock_outline_rounded, color: Colors.blue),
+          labelText: 'Contraseña',
+        ),
+      ),
+    );
+  }
+
+  Widget _createBackground(BuildContext context) {
+    final backround = Container(
+      height: double.infinity,
+      width: double.infinity,
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          colors: <Color>[
+            Color.fromRGBO(0, 85, 194, 5),
+            Color.fromRGBO(0, 86, 193, 20),
+          ],
+        ),
+      ),
+    );
+    return Stack(
+      children: <Widget>[
+        backround,
+      ],
     );
   }
 }
