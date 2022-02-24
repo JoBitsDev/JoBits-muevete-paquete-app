@@ -891,3 +891,4 @@ DerivedData/
 .flutter-plugins-dependencies
 
 lib/objectbox.g.dart
+lib/utils/ui/ui_SelectOperation/select_operation_controller.dart

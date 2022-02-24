@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 import 'package:muevete_paquete/config/themes/theme_light.dart';
-import 'package:muevete_paquete/utils/ui/ui_SelectOperation/select_operation.dart';
+import 'package:muevete_paquete/utils/ui/landingPage/landing_page.dart';
 
 void main() {
   initDataBase();
@@ -10,7 +10,7 @@ void main() {
     //translations: Spanish(),
     locale: const Locale('es', 'ES'),
     debugShowCheckedModeBanner: false,
-    home: SelectOperation(),
+    home: LandingPage(),
     theme: ThemeLight.lightTheme,
   ));
 }
