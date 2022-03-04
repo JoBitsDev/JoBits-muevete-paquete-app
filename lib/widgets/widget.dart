@@ -3,10 +3,15 @@
 // throughout our application then that kind of customization widgets
 // we can add inside the file widget.dart which will be present inside the folder widgets
 
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:footer/footer.dart';
+import 'package:footer/footer_view.dart';
 import 'package:get/get.dart';
+import 'package:muevete_paquete/constants/assest_path.dart';
 import 'package:muevete_paquete/utils/ui/dashboard/dashboard.dart';
 import 'package:muevete_paquete/utils/ui/landingPage/landing_page.dart';
+import 'package:url_launcher/link.dart';
 
 import 'package:url_launcher/url_launcher.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -30,17 +35,49 @@ class IconNavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return Container(
       padding: const EdgeInsets.all(7.0),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: const <Widget>[
+        children: <Widget>[
           CircleAvatar(
             backgroundImage: AssetImage('assets/images/logo_Project.gif'),
           ),
         ],
       ),
+    );
+  }
+}
+
+class CircleAvatarAppBar extends StatelessWidget {
+  const CircleAvatarAppBar({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.only(right: 12.0),
+      child: CircleAvatar(
+        child: Text('US'),
+        backgroundColor: Colors.white,
+      ),
+    );
+  }
+}
+
+class logoApp extends StatelessWidget {
+  const logoApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center, // centers horizontally
+      crossAxisAlignment: CrossAxisAlignment.center, // centers vertically
+      children: <Widget>[
+        AssetImages(),
+        Text('MUEVETE PAQUETE'),
+        SizedBox(
+          width: 3,
+        ),
+      ],
     );
   }
 }
@@ -94,55 +131,44 @@ class ElementsBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(children: const <Widget>[
-      Center(
-        child: Text(
-          'La solución a tus envíos',
-          style: TextStyle(fontSize: 20.0),
-        ),
-      ),
-    ]);
-  }
-}
-
-class ButtonBody extends StatelessWidget {
-  const ButtonBody({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialButton(
-        child: Column(
+    return Column(
+      children: <Widget>[
+        SizedBox(height: 60.0),
+        Column(
           children: <Widget>[
-            Container(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 80.0, vertical: 15.0),
-              child: const Text('Comenzar'),
+            Text(
+              'La solución a tus envíos',
+              style: TextStyle(fontSize: 20.0),
+            ),
+            SizedBox(height: 25.0),
+            Text(
+              'Dolor deserunt culpa nostrud et veniam anim aliquip irure excepteur.\nisi nisi veniam aute consequat nostrud exercitation sit laboris exercitation fugiat voluptate.',
+              style: TextStyle(fontSize: 15.0),
+            ),
+            SizedBox(height: 25.0),
+            MaterialButton(
+              child: Column(
+                children: <Widget>[
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 30.0, vertical: 15.0),
+                    child: const Text('Comenzar'),
+                  ),
+                ],
+              ),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(5.0)),
+              elevation: 0.0,
+              color: Colors.blue,
+              textColor: Colors.white,
+              onPressed: () {
+                Get.to(LoginForm());
+              },
             ),
           ],
         ),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
-        elevation: 0.0,
-        color: Colors.blue,
-        textColor: Colors.white,
-        onPressed: () {
-          Get.to(LoginForm());
-        });
-  }
-}
-
-class TextBody extends StatelessWidget {
-  const TextBody({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(children: const <Widget>[
-      Center(
-        child: Text(
-          'Servicios',
-          style: TextStyle(fontSize: 20.0),
-        ),
-      ),
-    ]);
+      ],
+    );
   }
 }
 
@@ -152,80 +178,68 @@ class WhatsappButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      child: FloatingActionButton(
-        child: const FaIcon(FontAwesomeIcons.whatsapp),
-        backgroundColor: Colors.green.shade800,
-
-        // child: Image.asset(
-        //   'assets/images/whatsapp.png',
-        // ),
-        onPressed: () async {
-          const url = 'https://wa.me/+5353850659';
-          if (await canLaunch(url)) {
-            await launch(url);
-          } else {
-            throw 'Could not launch $url';
-          }
-        },
+      child: Align(
+        alignment: Alignment(1, 0.8),
+        child: FloatingActionButton(
+          child: FaIcon(FontAwesomeIcons.whatsapp),
+          backgroundColor: Colors.green.shade800,
+          onPressed: () async {
+            const url = 'https://wa.me/+5353850659';
+            if (await canLaunch(url)) {
+              await launch(url);
+            } else {
+              throw 'Could not launch $url';
+            }
+          },
+        ),
       ),
     );
   }
 }
 
-class CardsServicesHorizontal extends StatelessWidget {
-  const CardsServicesHorizontal({Key? key}) : super(key: key);
+// class CardsServicesHorizontal extends StatelessWidget {
+//   const CardsServicesHorizontal({Key? key}) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: 100,
-      child: ListView(
-        padding: EdgeInsets.symmetric(horizontal: 300.0, vertical: 10.0),
-        children: [
-          Row(
-            children: <Widget>[
-              Expanded(
-                child: SizedBox(
-                  height: 100.0,
-                  width: 80.0,
-                  child: Card(
-                    color: Colors.blue,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(50.0),
-                    ),
-                    child: Text(
-                      'Servicio 1',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  ),
-                ),
-              ),
-              Spacer(),
-              Expanded(
-                child: SizedBox(
-                  height: 100.0,
-                  width: 80.0,
-                  child: Card(
-                    color: Colors.blue,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(50.0),
-                    ),
-                    child: Text(
-                      'Servicio 2',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ],
-      ),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return SizedBox(
+//       height: 100,
+//       child: ListView(
+//         padding: EdgeInsets.symmetric(horizontal: 300.0, vertical: 10.0),
+//         children: [
+//           Row(
+//             children: <Widget>[
+//               Expanded(
+//                 child: SizedBox(
+//                   height: 100.0,
+//                   width: 80.0,
+//                   child: Card(
+//                     color: Colors.blue,
+//                     shape: RoundedRectangleBorder(
+//                       borderRadius: BorderRadius.circular(50.0),
+//                     ),
+//                   ),
+//                 ),
+//               ),
+//               Expanded(
+//                 child: SizedBox(
+//                   height: 100.0,
+//                   width: 80.0,
+//                   child: Card(
+//                     color: Colors.blue,
+//                     shape: RoundedRectangleBorder(
+//                       borderRadius: BorderRadius.circular(50.0),
+//                     ),
+//                   ),
+//                 ),
+//               ),
+//             ],
+//           ),
+//         ],
+//       ),
+//     );
+//   }
+// }
 
 class LoginForm extends StatelessWidget {
   @override
@@ -833,6 +847,72 @@ class Tag extends StatelessWidget {
         // backgroundColor: chipBackground,
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(10))),
+      ),
+    );
+  }
+}
+
+class CreateFooter extends StatelessWidget {
+  const CreateFooter({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: new FooterView(
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                RichText(
+                  text: TextSpan(
+                    text: 'MUEVETE PAQUETE',
+                  ),
+                ),
+                SizedBox(width: 20.0),
+                RichText(
+                  text: TextSpan(
+                    children: [
+                      TextSpan(
+                          text: "Política de privacidad",
+                          style: TextStyle(color: Colors.blue),
+                          recognizer: TapGestureRecognizer()..onTap = () {}),
+                    ],
+                  ),
+                ),
+                SizedBox(width: 20.0),
+                RichText(
+                  text: TextSpan(
+                    children: [
+                      TextSpan(
+                          text: "Términos y condiciones",
+                          style: TextStyle(color: Colors.blue),
+                          recognizer: TapGestureRecognizer()..onTap = () {}),
+                    ],
+                  ),
+                ),
+                Spacer(),
+                FaIcon(FontAwesomeIcons.twitter, color: Colors.blue),
+                SizedBox(width: 10.0),
+                FaIcon(FontAwesomeIcons.facebook, color: Colors.blue),
+                SizedBox(width: 10.0),
+                Container(
+                    child:
+                        FaIcon(FontAwesomeIcons.instagram, color: Colors.red),
+                    margin: EdgeInsets.only(right: 15.0)),
+              ],
+            ),
+          )
+        ],
+        footer: new Footer(
+          child: Text(''),
+          padding: EdgeInsets.all(10.0),
+          backgroundColor: Colors.blue,
+          alignment: Alignment.center,
+        ),
+        flex: 1, //default flex is 2
       ),
     );
   }
