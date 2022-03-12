@@ -6,9 +6,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:muevete_paquete/constants/assest_path.dart';
-import 'package:muevete_paquete/utils/ui/create_account/create_account.dart';
-import 'package:muevete_paquete/utils/ui/dashboard/dashboard.dart';
-import 'package:muevete_paquete/utils/ui/privacy_policies/privacy%20policies.dart';
+import 'package:muevete_paquete/core/pages/create_account/create_account.dart';
+import 'package:muevete_paquete/core/pages/dashboard/dashboard.dart';
+import 'package:muevete_paquete/core/pages/landingPage/landing_page.dart';
+import 'package:muevete_paquete/core/pages/privacy_policies/privacy%20policies.dart';
 import 'package:sizer/sizer.dart';
 
 import 'package:url_launcher/url_launcher.dart';
@@ -141,7 +142,7 @@ class ElementsBody extends StatelessWidget {
         SizedBox(height: MediaQuery.of(context).size.height * 0.2),
         Container(
           width: MediaQuery.of(context).size.width * 0.5,
-          height: MediaQuery.of(context).size.height * 0.5,
+          height: MediaQuery.of(context).size.height * 0.4,
           child: Container(
             height: MediaQuery.of(context).size.height * 0.2,
             child: Column(
@@ -1165,4 +1166,50 @@ class CreateFooter extends StatelessWidget {
 // }
 }
 
-class EdgeInsetGeometry {}
+class StepLandingPage extends StatefulWidget {
+  StepLandingPage({Key? key}) : super(key: key);
+  @override
+  State<StepLandingPage> createState() => _StepLandingPageState();
+}
+
+class _StepLandingPageState extends State<StepLandingPage> {
+  List<Step> steps = [
+    Step(
+      isActive: false,
+      state: StepState.editing,
+      title: const Text('Example1'),
+      content: Column(children: [
+        Text('Ejemplo1', textAlign: TextAlign.start),
+      ]),
+    ),
+    Step(
+      isActive: false,
+      state: StepState.editing,
+      title: const Text('Example2'),
+      content: Column(children: [
+        Text('Ejemplo2'),
+      ]),
+    ),
+    Step(
+      isActive: false,
+      state: StepState.editing,
+      title: const Text('Example3'),
+      content: Column(children: [
+        Text('Ejemplo3'),
+      ]),
+    ),
+  ];
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: MediaQuery.of(context).size.height * 0.2,
+      width: MediaQuery.of(context).size.width * 0.5,
+      child: Scaffold(
+        body: Stepper(
+          type: StepperType.horizontal,
+          steps: steps,
+        ),
+      ),
+    );
+  }
+}

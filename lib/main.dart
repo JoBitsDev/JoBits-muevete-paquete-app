@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
-import 'package:muevete_paquete/utils/ui/landingPage/landing_page.dart';
+
+import 'core/pages/landingPage/landing_page.dart';
 
 void main() {
   initDataBase();
