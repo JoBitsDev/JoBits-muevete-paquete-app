@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:muevete_paquete/widgets/widget.dart';
+import 'package:muevete_paquete/core/pages/login/login.dart';
 import 'package:sizer/sizer.dart';
 import 'package:get/get.dart';
 
@@ -98,7 +98,7 @@ Widget _createSubmitButton() {
     color: Colors.blue,
     textColor: Colors.white,
     onPressed: () {
-      Get.to(LoginForm());
+      Get.to(Login());
     },
   );
 }
@@ -122,7 +122,7 @@ Widget _createCancelButton() {
     color: Colors.blue,
     textColor: Colors.white,
     onPressed: () {
-      Get.to(LoginForm());
+      Get.to(Login());
     },
   );
 }
