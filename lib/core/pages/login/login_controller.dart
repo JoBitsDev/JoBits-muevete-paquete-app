@@ -1,12 +1,13 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:muevete_paquete/core/pages/dashboard/dashboard.dart';
 
 import 'login_model.dart';
 
 class LoginController extends GetxController {
   LoginViewModel model = LoginViewModel();
 
-  final GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
+  GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
 
   late TextEditingController nameController, passwordController;
   var name = '';
@@ -45,6 +46,8 @@ class LoginController extends GetxController {
     final isValid = loginFormKey.currentState!.validate();
     if (!isValid) {
       return;
+    } else {
+      Get.to(Dashboard());
     }
     loginFormKey.currentState!.save();
   }

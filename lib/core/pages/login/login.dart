@@ -2,17 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:muevete_paquete/core/pages/create_account/create_account.dart';
-import 'package:muevete_paquete/core/pages/dashboard/dashboard.dart';
 import 'package:muevete_paquete/core/pages/privacy_policies/privacy%20policies.dart';
 import 'package:muevete_paquete/widgets/widget.dart';
 import 'package:sizer/sizer.dart';
 
 import 'login_controller.dart';
 
-class Login extends GetView<LoginController> {
-  Login() {
-    Get.put(LoginController());
-  }
+class Login extends StatefulWidget {
+  Login({Key? key}) : super(key: key);
+
+  @override
+  State<Login> createState() => _LoginState();
+}
+
+class _LoginState extends State<Login> {
+  final _controller = Get.put(LoginController());
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +34,7 @@ class Login extends GetView<LoginController> {
             child: Scaffold(
               body: Center(
                 child: Container(
+                  height: MediaQuery.of(context).size.height * 1,
                   child: Scaffold(
                     backgroundColor: Colors.grey.shade300,
                     body: Column(
@@ -54,7 +59,7 @@ class Login extends GetView<LoginController> {
                         ),
                         Center(
                           child: Form(
-                            key: controller.loginFormKey,
+                            key: _controller.loginFormKey,
                             autovalidateMode:
                                 AutovalidateMode.onUserInteraction,
                             child: Container(
@@ -88,9 +93,7 @@ class Login extends GetView<LoginController> {
                                     SizedBox(height: 20.0),
                                     Text('Si inicias sesión aceptas nuestra'),
                                     TextButton(
-                                      onHover: (value) {
-                                        final Color? hoverColor;
-                                      },
+                                      onHover: (value) {},
                                       onPressed: () {
                                         Get.to(PrivacyPoliciesPage());
                                       },
@@ -125,22 +128,22 @@ class Login extends GetView<LoginController> {
     return StreamBuilder(
       builder: (BuildContext context, AsyncSnapshot snapshot) {
         return MaterialButton(
-            child: Container(
-              width: MediaQuery.of(context).size.width * 0.1,
-              padding: EdgeInsets.all(12.0),
-              child: Center(
-                child: Text('Iniciar'),
-              ),
+          child: Container(
+            width: MediaQuery.of(context).size.width * 0.1,
+            padding: EdgeInsets.all(12.0),
+            child: Center(
+              child: Text('Iniciar'),
             ),
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(5.0)),
-            elevation: 0.0,
-            color: Colors.blue,
-            textColor: Colors.white,
-            onPressed: () {
-              controller.checkLogin();
-              // Get.to(Dashboard());
-            });
+          ),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
+          elevation: 0.0,
+          color: Colors.blue,
+          textColor: Colors.white,
+          onPressed: () {
+            _controller.checkLogin();
+          },
+        );
       },
     );
   }
@@ -155,12 +158,12 @@ class Login extends GetView<LoginController> {
             child: Column(
               children: <Widget>[
                 TextFormField(
-                  controller: controller.nameController,
+                  controller: _controller.nameController,
                   onSaved: (value) {
-                    controller.name = value!;
+                    _controller.name = value!;
                   },
                   validator: (value) {
-                    return controller.validateName(value!);
+                    return _controller.validateName(value!);
                   },
                   decoration: InputDecoration(
                     icon:
@@ -179,26 +182,22 @@ class Login extends GetView<LoginController> {
   }
 
   Widget _password(pwdController) {
-    return StreamBuilder(
-      builder: (BuildContext context, AsyncSnapshot snapshot) {
-        return Container(
-          padding: EdgeInsets.symmetric(horizontal: 20.0),
-          child: TextFormField(
-            controller: controller.passwordController,
-            onSaved: (value) {
-              controller.name = value!;
-            },
-            validator: (value) {
-              return controller.validatePassword(value!);
-            },
-            obscureText: true,
-            decoration: InputDecoration(
-              icon: Icon(Icons.lock_outline_rounded, color: Colors.blue),
-              labelText: 'Contraseña',
-            ),
-          ),
-        );
-      },
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 20.0),
+      child: TextFormField(
+        controller: _controller.passwordController,
+        onSaved: (value) {
+          _controller.name = value!;
+        },
+        validator: (value) {
+          return _controller.validatePassword(value!);
+        },
+        obscureText: true,
+        decoration: InputDecoration(
+          icon: Icon(Icons.lock_outline_rounded, color: Colors.blue),
+          labelText: 'Contraseña',
+        ),
+      ),
     );
   }
 
@@ -242,9 +241,7 @@ class Login extends GetView<LoginController> {
               SizedBox(width: 2.0),
               TextButton(
                 onPressed: () {
-                  Get.to(
-                    CreateAccount(),
-                  );
+                  Get.to(CreateAccount());
                 },
                 child: Text(
                   '¿Desea crear nueva cuenta?',

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:footer/footer.dart';
 import 'package:footer/footer_view.dart';
 
-import 'package:muevete_paquete/constants/assest_path.dart';
 import 'package:muevete_paquete/widgets/widget.dart';
 
 class Dashboard extends StatelessWidget {
