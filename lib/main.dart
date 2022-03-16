@@ -14,6 +14,7 @@ void main() {
       debugShowCheckedModeBanner: false,
       home: LandingPage(),
       theme: ThemeData(
+        fontFamily: 'Roboto-Italic.ttf',
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
     ),

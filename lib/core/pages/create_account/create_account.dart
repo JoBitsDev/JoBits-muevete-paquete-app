@@ -5,7 +5,13 @@ import 'package:sizer/sizer.dart';
 import 'package:get/get.dart';
 import 'create_account_controller.dart';
 
-class CreateAccount extends GetView<CreateAccountController> {
+class CreateAccount extends GetResponsiveView<CreateAccountController> {
+  @override
+  Widget? phone();
+  Widget? tablet();
+  Widget? desktop();
+  Widget? watch();
+
   CreateAccount() {
     Get.put(CreateAccountController());
   }

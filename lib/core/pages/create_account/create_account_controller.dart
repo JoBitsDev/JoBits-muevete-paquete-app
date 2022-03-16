@@ -1,6 +1,5 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:muevete_paquete/core/pages/login/login.dart';
 
 class CreateAccountController extends GetxController {
   final accountKey = GlobalKey<FormState>();

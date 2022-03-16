@@ -6,8 +6,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:muevete_paquete/constants/assest_path.dart';
+import 'package:muevete_paquete/core/pages/deliveryPackage/deliveryPackage.dart';
 import 'package:muevete_paquete/core/pages/login/login.dart';
 import 'package:muevete_paquete/core/pages/privacy_policies/privacy%20policies.dart';
+import 'package:muevete_paquete/core/pages/term_and_conditions/term_Condition.dart';
 
 import 'package:url_launcher/url_launcher.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -104,22 +106,27 @@ class DrawerMenu extends StatelessWidget {
             ),
           ),
           ListTile(
-            leading: const Icon(Icons.pages, color: Colors.blue),
-            title: const Text('Gestionar Paquete'),
-            onTap: () {},
+            leading: Icon(FontAwesomeIcons.boxes, color: Colors.blue.shade500),
+            title: const Text('Llevar Paquete'),
+            onTap: () {
+              Get.to(DeliveryPackage());
+            },
           ),
           ListTile(
-            leading: const Icon(Icons.pages, color: Colors.blue),
+            leading: Icon(FontAwesomeIcons.planeArrival,
+                color: Colors.blue.shade500),
             title: const Text('Gestionar Viaje'),
             onTap: () {},
           ),
           ListTile(
-            leading: const Icon(Icons.pages, color: Colors.blue),
+            leading: Icon(FontAwesomeIcons.planeDeparture,
+                color: Colors.blue.shade500),
             title: const Text('Nuevo Viaje'),
             onTap: () {},
           ),
           ListTile(
-            leading: const Icon(Icons.pages, color: Colors.blue),
+            leading:
+                Icon(FontAwesomeIcons.fileUpload, color: Colors.blue.shade500),
             title: const Text('Publicar Paquete'),
             onTap: () {},
           ),
@@ -449,11 +456,6 @@ class _Choice08State extends State<Choice08>
   }
 }
 
-// final Color discountBackground = prefix0.appTheme.primaryColor;
-// final Color flightColor = prefix0.appTheme.primaryColor;
-// final Color chipBackground =
-//     prefix0.appTheme.secondaryHeaderColor.withOpacity(.2);
-// final Color borderColor = prefix0.appTheme.primaryColor.withAlpha(100);
 String? fromlocation;
 String? tolocation;
 
@@ -774,9 +776,6 @@ class CreateFooter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      // height: MediaQuery.of(context).size.height,
-      // width: MediaQuery.of(context).size.width,
-
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -805,7 +804,7 @@ class CreateFooter extends StatelessWidget {
                   child: TextButton(
                       onPressed: () {
                         Get.to(
-                          Login(),
+                          TermConditionPage(),
                         );
                       },
                       child: Text('Términos y condiciones')),
@@ -842,116 +841,22 @@ class CreateFooter extends StatelessWidget {
         ],
       ),
     );
-    // body: new FooterView(
-    //   children: <Widget>[
-    //     Container(
-    //       height: MediaQuery.of(context).size.height * 0.02,
-    //       child: Expanded(
-    //         child: Padding(
-    //           padding: const EdgeInsets.all(20),
-    //           child: Row(
-    //             mainAxisAlignment: MainAxisAlignment.start,
-    //             crossAxisAlignment: CrossAxisAlignment.center,
-    //             children: <Widget>[
-    //               RichText(
-    //                 text: TextSpan(
-    //                   text: 'MUEVETE PAQUETE',
-    //                 ),
-    //               ),
-    //               SizedBox(
-    //                 width: MediaQuery.of(context).size.width * 0.1,
-    //               ),
-    //               RichText(
-    //                 text: TextSpan(
-    //                   children: [
-    //                     TextSpan(
-    //                         text: "Política de privacidad",
-    //                         style: TextStyle(color: Colors.blue),
-    //                         recognizer: TapGestureRecognizer()
-    //                           ..onTap = () {}),
-    //                   ],
-    //                 ),
-    //               ),
-    //               SizedBox(
-    //                 width: MediaQuery.of(context).size.width * 0.09,
-    //               ),
-    //               RichText(
-    //                 text: TextSpan(
-    //                   children: [
-    //                     TextSpan(
-    //                         text: "Términos y condiciones",
-    //                         style: TextStyle(color: Colors.blue),
-    //                         recognizer: TapGestureRecognizer()
-    //                           ..onTap = () {}),
-    //                   ],
-    //                 ),
-    //               ),
-    //               Spacer(),
-    //               FaIcon(FontAwesomeIcons.twitter, color: Colors.blue),
-    //               SizedBox(
-    //                 width: MediaQuery.of(context).size.width * 0.01,
-    //               ),
-    //               FaIcon(FontAwesomeIcons.facebook, color: Colors.blue),
-    //               SizedBox(
-    //                 width: MediaQuery.of(context).size.width * 0.01,
-    //               ),
-    //               Container(
-    //                   child: FaIcon(FontAwesomeIcons.instagram,
-    //                       color: Colors.red),
-    //                   margin: EdgeInsets.only(right: 15.0)),
-    //             ],
-    //           ),
-    //         ),
-    //       ),
-    //     )
-    //   ],
-    //   footer: new Footer(
-    //     child: Text(''),
-    //     padding: EdgeInsets.all(50.0),
-    //     backgroundColor: Colors.blue,
-    //     alignment: Alignment.center,
-    //   ),
-    //   flex: 2, //default flex is 2
-    // ),
   }
-
-// class ResponsiveWidget extends StatelessWidget {
-//   const ResponsiveWidget({Key? key, required Scaffold child}) : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//         builder: (context, widget) => ResponsiveWrapper.builder(
-//               BouncingScrollWrapper.builder(context, widget!),
-//               maxWidth: 900,
-//               minWidth: 450,
-//               defaultScale: true,
-//               breakpoints: [
-//                 const ResponsiveBreakpoint.resize(450, name: MOBILE),
-//                 const ResponsiveBreakpoint.autoScale(800, name: TABLET),
-//                 const ResponsiveBreakpoint.resize(900, name: DESKTOP),
-//                 const ResponsiveBreakpoint.autoScale(2460, name: "4K"),
-//               ],
-//             ));
-//   }
-// }
 }
 
-class StepLandingPage extends StatefulWidget {
-  StepLandingPage({Key? key}) : super(key: key);
+class StepPage extends StatefulWidget {
+  StepPage({Key? key}) : super(key: key);
   @override
-  State<StepLandingPage> createState() => _StepLandingPageState();
+  State<StepPage> createState() => _StepPage();
 }
 
-class _StepLandingPageState extends State<StepLandingPage> {
+class _StepPage extends State<StepPage> {
   List<Step> steps = [
     Step(
-      isActive: false,
-      state: StepState.editing,
+      isActive: true,
+      state: StepState.disabled,
       title: const Text('Example1'),
-      content: Column(children: [
-        Text('Ejemplo1', textAlign: TextAlign.start),
-      ]),
+      content: Container(),
     ),
     Step(
       isActive: false,

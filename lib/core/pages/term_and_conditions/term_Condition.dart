@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:muevete_paquete/widgets/widget.dart';
 
-class PrivacyPoliciesPage extends StatefulWidget {
+class TermConditionPage extends StatefulWidget {
   @override
-  _PrivacyPoliciesPageState createState() => _PrivacyPoliciesPageState();
+  _TermConditionPageState createState() => _TermConditionPageState();
 }
 
-class _PrivacyPoliciesPageState extends State<PrivacyPoliciesPage> {
+class _TermConditionPageState extends State<TermConditionPage> {
   bool isChecked = false;
   @override
   Widget build(BuildContext context) {

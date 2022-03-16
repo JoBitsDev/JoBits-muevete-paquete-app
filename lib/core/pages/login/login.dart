@@ -8,17 +8,17 @@ import 'package:sizer/sizer.dart';
 
 import 'login_controller.dart';
 
-class Login extends StatefulWidget {
-  Login({Key? key}) : super(key: key);
-
+class Login extends GetResponsiveView<LoginController> {
   @override
-  State<Login> createState() => _LoginState();
-}
+  Widget? phone();
+  Widget? tablet();
+  Widget? desktop();
+  Widget? watch();
 
-class _LoginState extends State<Login> {
-  final _controller = Get.put(LoginController());
+  Login() {
+    Get.put(LoginController());
+  }
 
-  @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     final nameController = TextEditingController();
@@ -36,7 +36,7 @@ class _LoginState extends State<Login> {
                 child: Container(
                   height: MediaQuery.of(context).size.height * 1,
                   child: Scaffold(
-                    backgroundColor: Colors.grey.shade300,
+                    backgroundColor: Colors.white70,
                     body: Column(
                       children: <Widget>[
                         SizedBox(
@@ -59,7 +59,7 @@ class _LoginState extends State<Login> {
                         ),
                         Center(
                           child: Form(
-                            key: _controller.loginFormKey,
+                            key: controller.loginFormKey,
                             autovalidateMode:
                                 AutovalidateMode.onUserInteraction,
                             child: Container(
@@ -141,7 +141,7 @@ class _LoginState extends State<Login> {
           color: Colors.blue,
           textColor: Colors.white,
           onPressed: () {
-            _controller.checkLogin();
+            controller.checkLogin();
           },
         );
       },
@@ -158,12 +158,12 @@ class _LoginState extends State<Login> {
             child: Column(
               children: <Widget>[
                 TextFormField(
-                  controller: _controller.nameController,
+                  controller: controller.nameController,
                   onSaved: (value) {
-                    _controller.name = value!;
+                    controller.name = value!;
                   },
                   validator: (value) {
-                    return _controller.validateName(value!);
+                    return controller.validateName(value!);
                   },
                   decoration: InputDecoration(
                     icon:
@@ -185,12 +185,12 @@ class _LoginState extends State<Login> {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 20.0),
       child: TextFormField(
-        controller: _controller.passwordController,
+        controller: controller.passwordController,
         onSaved: (value) {
-          _controller.name = value!;
+          controller.name = value!;
         },
         validator: (value) {
-          return _controller.validatePassword(value!);
+          return controller.validatePassword(value!);
         },
         obscureText: true,
         decoration: InputDecoration(
@@ -238,7 +238,7 @@ class _LoginState extends State<Login> {
                 (FontAwesomeIcons.user),
                 color: Colors.blue,
               ),
-              SizedBox(width: 2.0),
+              SizedBox(width: 4.0),
               TextButton(
                 onPressed: () {
                   Get.to(CreateAccount());
