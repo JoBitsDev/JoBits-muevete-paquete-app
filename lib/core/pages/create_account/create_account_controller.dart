@@ -1,5 +1,9 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:muevete_paquete/core/pages/dashboard/dashboard.dart';
+import 'package:muevete_paquete/core/pages/dashboard/dashboard_controller.dart';
+import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
 
 class CreateAccountController extends GetxController {
   final accountKey = GlobalKey<FormState>();
@@ -72,15 +76,37 @@ class CreateAccountController extends GetxController {
     }
   }
 
-  void checkAccount() {
-    final isValid = accountKey.currentState!.validate();
+  void checkAccount() async {
+    final isValid =  accountKey.currentState!.validate();
     if (!isValid) {
       return;
-    } else {
-      Get.back();
-
-      ;
     }
-    accountKey.currentState!.save();
+    createAccount();
+   // accountKey.currentState!.save();
+  }
+
+  void createAccount() async {
+    final user = ParseUser.createUser(name, password, email);
+
+    var response = await user.signUp();
+
+    if (response.success) {
+      Get.to(Dashboard());
+    } else {
+      showError(response.error!.message);
+    }
+  }
+
+  void showError(String message) {
+    Get.snackbar(
+      'Error',
+      message,
+      snackPosition: SnackPosition.BOTTOM,
+      backgroundColor: Colors.red,
+      colorText: Colors.white,
+      margin: EdgeInsets.all(10),
+      snackStyle: SnackStyle.FLOATING,
+      duration: Duration(seconds: 3),
+    );
   }
 }
