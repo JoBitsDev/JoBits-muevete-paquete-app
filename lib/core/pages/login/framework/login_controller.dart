@@ -44,6 +44,7 @@ class LoginController extends GetxController {
 
   void checkLogin() {
     final isValid = loginFormKey.currentState!.validate();
+    
     if (!isValid) {
       return;
     } else {
@@ -51,4 +52,5 @@ class LoginController extends GetxController {
     }
     loginFormKey.currentState!.save();
   }
+  
 }

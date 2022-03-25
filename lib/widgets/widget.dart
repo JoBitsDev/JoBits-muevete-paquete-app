@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:muevete_paquete/constants/assest_path.dart';
 import 'package:muevete_paquete/core/pages/deliveryPackage/deliveryPackage.dart';
-import 'package:muevete_paquete/core/pages/login/login.dart';
+import 'package:muevete_paquete/core/pages/login/framework/login.dart';
 import 'package:muevete_paquete/core/pages/privacy_policies/privacy%20policies.dart';
 import 'package:muevete_paquete/core/pages/term_and_conditions/term_Condition.dart';
 
