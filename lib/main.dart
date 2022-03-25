@@ -12,7 +12,7 @@ void main() {
     GetMaterialApp(
       //translations: Spanish(),
       locale: const Locale('es', 'ES'),
-      debugShowCheckedModeBanner: true,
+      debugShowCheckedModeBanner: false,
       home: LandingPage(),
       theme: ThemeData(
         fontFamily: 'Roboto-Italic.ttf',

@@ -38,10 +38,7 @@ class Dashboard extends GetResponsiveView<DashboardController> {
             drawer: const DrawerMenu(),
             body: Container(
               decoration: BoxDecoration(color: Colors.grey.shade200),
-              child: FooterView(
-                footer: Footer(
-                  child: CreateFooter(),
-                ),
+              child: Column(
                 children: <Widget>[
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
