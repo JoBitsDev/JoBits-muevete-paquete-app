@@ -1,6 +1,8 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:muevete_paquete/core/pages/dashboard/dashboard.dart';
+import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
 
 import 'login_model.dart';
 
@@ -44,13 +46,49 @@ class LoginController extends GetxController {
 
   void checkLogin() {
     final isValid = loginFormKey.currentState!.validate();
-    
     if (!isValid) {
       return;
-    } else {
-      Get.to(Dashboard());
     }
+    doLogin();
     loginFormKey.currentState!.save();
   }
-  
+
+  void doLogin() async {
+    final user = ParseUser(nameController.text, passwordController.text, null);
+
+    var response = await user.login();
+
+    if (response.success) {
+      showSuccess("User was successfully login!");
+      nameController.text = "";
+      passwordController.text = "";
+      Get.to(Dashboard());
+    } else {
+      showError(response.error!.message);
+    }
+  }
+
+  void showError(message) {
+    Get.snackbar(
+      "Error",
+      message,
+      backgroundColor: Colors.red,
+      colorText: Colors.white,
+      snackPosition: SnackPosition.BOTTOM,
+      margin: EdgeInsets.all(10),
+      duration: Duration(seconds: 3),
+    );
+  }
+
+  void showSuccess(String s) {
+    Get.snackbar(
+      "Success",
+      s,
+      backgroundColor: Colors.green,
+      colorText: Colors.white,
+      snackPosition: SnackPosition.BOTTOM,
+      margin: EdgeInsets.all(10),
+      duration: Duration(seconds: 3),
+    );
+  }
 }

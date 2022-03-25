@@ -187,7 +187,7 @@ class Login extends GetResponsiveView<LoginController> {
       child: TextFormField(
         controller: controller.passwordController,
         onSaved: (value) {
-          controller.name = value!;
+          controller.password = value!;
         },
         validator: (value) {
           return controller.validatePassword(value!);
