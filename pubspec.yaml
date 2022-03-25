@@ -46,6 +46,7 @@ dependencies:
   easy_data_validator: ^1.0.1
   rxdart: ^0.22.0
   google_fonts: ^2.3.0
+  parse_server_sdk_flutter:
   
 
 
