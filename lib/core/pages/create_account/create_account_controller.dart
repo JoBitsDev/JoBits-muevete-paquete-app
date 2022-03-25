@@ -77,16 +77,17 @@ class CreateAccountController extends GetxController {
   }
 
   void checkAccount() async {
-    final isValid =  accountKey.currentState!.validate();
+    final isValid = accountKey.currentState!.validate();
     if (!isValid) {
       return;
     }
     createAccount();
-   // accountKey.currentState!.save();
+    // accountKey.currentState!.save();
   }
 
   void createAccount() async {
-    final user = ParseUser.createUser(name, password, email);
+    final user = ParseUser.createUser(
+        nameController.text, passwordController.text, emailController.text);
 
     var response = await user.signUp();
 
