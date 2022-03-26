@@ -1,8 +1,9 @@
+// ignore_for_file: import_of_legacy_library_into_null_safe
+
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
+import 'package:muevete_paquete/core/pages/landing_page/landing_page.dart';
 import 'package:muevete_paquete/utils/services/rest_api_service.dart';
-
-import 'core/pages/landingPage/landing_page.dart';
 
 void main() {
   initDataBase();

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:muevete_paquete/core/pages/dashboard/dashboard.dart';
@@ -63,6 +64,12 @@ class LoginController extends GetxController {
       nameController.text = "";
       passwordController.text = "";
       Get.to(Dashboard());
+      var focusNode = FocusNode();
+      child:
+      TextField(controller: TextEditingController());
+
+      child:
+      TextField(controller: TextEditingController());
     } else {
       showError(response.error!.message);
     }

@@ -61,10 +61,6 @@ class LandingPage extends GetResponsiveView<LandingPageController> {
                               ElementsBody(),
                             ],
                           ),
-                          SizedBox(
-                              height:
-                                  MediaQuery.of(context).size.height * 0.02),
-                          StepPage(),
                         ],
                       );
                     },

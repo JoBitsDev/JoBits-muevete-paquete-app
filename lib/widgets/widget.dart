@@ -6,10 +6,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:muevete_paquete/constants/assest_path.dart';
-import 'package:muevete_paquete/core/pages/deliveryPackage/deliveryPackage.dart';
-import 'package:muevete_paquete/core/pages/landingPage/landing_page.dart';
+import 'package:muevete_paquete/core/pages/delivery_package/deliveryPackage.dart';
+import 'package:muevete_paquete/core/pages/landing_page/landing_page.dart';
 import 'package:muevete_paquete/core/pages/login/framework/login.dart';
 import 'package:muevete_paquete/core/pages/privacy_policies/privacy%20policies.dart';
+import 'package:muevete_paquete/core/pages/send_package/send_package.dart';
 import 'package:muevete_paquete/core/pages/term_and_conditions/term_Condition.dart';
 
 import 'package:url_launcher/url_launcher.dart';
@@ -227,67 +228,71 @@ class CardsServicesHorizontal extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 100,
-      child: ListView(
-        padding: EdgeInsets.symmetric(horizontal: 300.0, vertical: 10.0),
-        children: [
-          Row(
-            children: <Widget>[
-              Expanded(
-                child: Container(
-                  width: MediaQuery.of(context).size.width * 0.2,
-                  height: MediaQuery.of(context).size.height * 0.2,
-                  child: Card(
-                    elevation: 8.0,
-                    shadowColor: Colors.black,
-                    child: Column(children: <Widget>[
-                      Text(
-                        'Enviar Paquete',
-                        textAlign: TextAlign.center,
-                        overflow: TextOverflow.ellipsis,
-                        style: const TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                      Text(
-                        'Nostrud in nisi \nconsectetur \nlaborum qui \n ',
-                        textAlign: TextAlign.center,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ]),
-                    color: Colors.white,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(5.0),
+      child: Row(
+        children: <Widget>[
+          Expanded(
+            child: Container(
+              padding: EdgeInsets.only(left: 20.0),
+              width: MediaQuery.of(context).size.width * 0.2,
+              height: MediaQuery.of(context).size.height * 0.2,
+              child: Card(
+                elevation: 8.0,
+                shadowColor: Colors.black,
+                child: Column(children: <Widget>[
+                  TextButton(
+                    onPressed: () {
+                      Get.to(
+                        SendPackage(),
+                      );
+                    },
+                    child: Text(
+                      'Enviar Paquete',
+                      textAlign: TextAlign.center,
+                      overflow: TextOverflow.ellipsis,
+                      style: const TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ),
-                ),
-              ),
-              Spacer(),
-              Expanded(
-                child: Container(
-                  width: MediaQuery.of(context).size.width * 0.2,
-                  height: MediaQuery.of(context).size.height * 0.2,
-                  child: Card(
-                    elevation: 8.0,
-                    shadowColor: Colors.black,
-                    child: Column(children: <Widget>[
-                      Text(
-                        'Llevar Paquete',
-                        textAlign: TextAlign.center,
-                        // overflow: TextOverflow.ellipsis,
-                        style: const TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                      Text(
-                        'Ullamco excepteur velit \nnostrud duis nisi \nsint ad consectetur culpa eu velit voluptate ea.',
-                        textAlign: TextAlign.center,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ]),
-                    color: Colors.white,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(5.0),
-                    ),
+                  Text(
+                    'Nostrud in nisi \nconsectetur \nlaborum qui \n ',
+                    textAlign: TextAlign.center,
+                    overflow: TextOverflow.ellipsis,
                   ),
+                ]),
+                color: Colors.white,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(5.0),
                 ),
               ),
-            ],
+            ),
+          ),
+          Spacer(),
+          Expanded(
+            child: Container(
+              padding: EdgeInsets.only(right: 20.0),
+              width: MediaQuery.of(context).size.width * 0.2,
+              height: MediaQuery.of(context).size.height * 0.2,
+              child: Card(
+                elevation: 8.0,
+                shadowColor: Colors.black,
+                child: Column(children: <Widget>[
+                  Text(
+                    'Llevar Paquete',
+                    textAlign: TextAlign.center,
+                    // overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  Text(
+                    'Ullamco excepteur velit \nnostrud duis nisi \nsint ad consectetur culpa eu velit voluptate ea.',
+                    textAlign: TextAlign.center,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ]),
+                color: Colors.white,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(5.0),
+                ),
+              ),
+            ),
           ),
         ],
       ),
@@ -788,10 +793,6 @@ class CreateFooter extends StatelessWidget {
               children: <Widget>[
                 Container(
                   margin: EdgeInsets.only(left: 20.0),
-                  child: Container(
-                    margin: EdgeInsets.only(right: 20.0),
-                    child: Text('MUEVETE PAQUETE'),
-                  ),
                 ),
                 Container(
                   child: TextButton(
@@ -822,21 +823,43 @@ class CreateFooter extends StatelessWidget {
                 icon: Icon(FontAwesomeIcons.twitter),
                 tooltip: 'Twitter',
                 color: Colors.blue,
-                onPressed: () {},
+                onPressed: () async {
+                  const url = 'https://wa.me/+5353850659';
+                  if (await canLaunch(url)) {
+                    await launch(url);
+                  } else {
+                    throw 'Could not launch $url';
+                  }
+                },
               ),
               SizedBox(width: 10.0),
               IconButton(
                 icon: Icon(FontAwesomeIcons.facebook),
                 tooltip: 'Facebook',
                 color: Colors.blue,
-                onPressed: () {},
+                onPressed: () async {
+                  const url =
+                      'https://www.facebook.com/profile.php?id=100030927611036';
+                  if (await canLaunch(url)) {
+                    await launch(url);
+                  } else {
+                    throw 'Could not launch $url';
+                  }
+                },
               ),
               SizedBox(width: 10.0),
               IconButton(
                 icon: Icon(FontAwesomeIcons.instagram),
                 tooltip: 'Instagram',
                 color: Colors.red,
-                onPressed: () {},
+                onPressed: () async {
+                  const url = 'https://wa.me/+5353850659';
+                  if (await canLaunch(url)) {
+                    await launch(url);
+                  } else {
+                    throw 'Could not launch $url';
+                  }
+                },
               ),
               SizedBox(width: 10.0),
             ],

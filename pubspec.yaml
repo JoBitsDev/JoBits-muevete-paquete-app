@@ -47,7 +47,7 @@ dependencies:
   rxdart: ^0.22.0
   google_fonts: ^2.3.0
   parse_server_sdk_flutter:
-  
+  keyboard_actions: "^3.4.7"
 
 
 dev_dependencies:

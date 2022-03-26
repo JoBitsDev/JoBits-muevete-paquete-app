@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:muevete_paquete/core/pages/dashboard/dashboard.dart';
-import 'package:muevete_paquete/core/pages/dashboard/dashboard_controller.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
 
 class CreateAccountController extends GetxController {
@@ -92,7 +90,10 @@ class CreateAccountController extends GetxController {
     var response = await user.signUp();
 
     if (response.success) {
-      Get.to(Dashboard());
+      Get.back();
+      var focusNode = FocusNode();
+
+      clearForm();
     } else {
       showError(response.error!.message);
     }
@@ -109,5 +110,12 @@ class CreateAccountController extends GetxController {
       snackStyle: SnackStyle.FLOATING,
       duration: Duration(seconds: 3),
     );
+  }
+
+  void clearForm() {
+    nameController.clear();
+    passwordController.clear();
+    repeatPasswordController.clear();
+    emailController.clear();
   }
 }

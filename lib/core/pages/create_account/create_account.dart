@@ -106,25 +106,26 @@ class CreateAccount extends GetResponsiveView<CreateAccountController> {
   Widget _createSubmitButton(nameController, passwordController,
       repeatPasswordController, emailController) {
     return MaterialButton(
-        child: Sizer(
-          builder: (BuildContext context, Orientation orientation,
-              DeviceType deviceType) {
-            return Container(
-              width: MediaQuery.of(context).size.width * 0.1,
-              padding: EdgeInsets.all(12.0),
-              child: Center(
-                child: Text('OK'),
-              ),
-            );
-          },
-        ),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
-        elevation: 0.0,
-        color: Colors.blue,
-        textColor: Colors.white,
-        onPressed: () async {
-          controller.checkAccount();
-        });
+      child: Sizer(
+        builder: (BuildContext context, Orientation orientation,
+            DeviceType deviceType) {
+          return Container(
+            width: MediaQuery.of(context).size.width * 0.1,
+            padding: EdgeInsets.all(12.0),
+            child: Center(
+              child: Text('OK'),
+            ),
+          );
+        },
+      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
+      elevation: 0.0,
+      color: Colors.blue,
+      textColor: Colors.white,
+      onPressed: () async {
+        controller.checkAccount();
+      },
+    );
   }
 
   Widget _createCancelButton() {

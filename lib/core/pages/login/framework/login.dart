@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:muevete_paquete/core/pages/create_account/create_account.dart';
@@ -63,7 +64,7 @@ class Login extends GetResponsiveView<LoginController> {
                             autovalidateMode:
                                 AutovalidateMode.onUserInteraction,
                             child: Container(
-                              width: size.width * 0.20,
+                              width: size.width * 0.30,
                               margin: EdgeInsets.symmetric(horizontal: 10.0),
                               padding: EdgeInsets.symmetric(vertical: 30.0),
                               decoration: BoxDecoration(
@@ -127,22 +128,33 @@ class Login extends GetResponsiveView<LoginController> {
   Widget _buttonLogin(nameController, pwdController) {
     return StreamBuilder(
       builder: (BuildContext context, AsyncSnapshot snapshot) {
-        return MaterialButton(
-          child: Container(
-            width: MediaQuery.of(context).size.width * 0.1,
-            padding: EdgeInsets.all(12.0),
-            child: Center(
-              child: Text('Iniciar'),
-            ),
-          ),
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
-          elevation: 0.0,
-          color: Colors.blue,
-          textColor: Colors.white,
-          onPressed: () {
-            controller.checkLogin();
+        return RawKeyboardListener(
+          autofocus: true,
+          focusNode: FocusNode(),
+          onKey: (event) {
+            if (event.isKeyPressed(LogicalKeyboardKey.enter)) {
+              controller.checkLogin();
+            }
+            ;
           },
+          child: MaterialButton(
+            child: Container(
+              width: MediaQuery.of(context).size.width * 0.1,
+              padding: EdgeInsets.all(12.0),
+              child: Center(
+                child: Text('Iniciar'),
+              ),
+            ),
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(5.0)),
+            elevation: 0.0,
+            color: Colors.blue,
+            textColor: Colors.white,
+            autofocus: true,
+            onPressed: () {
+              controller.checkLogin();
+            },
+          ),
         );
       },
     );
