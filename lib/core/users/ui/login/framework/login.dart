@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:muevete_paquete/core/pages/create_account/create_account.dart';
-import 'package:muevete_paquete/core/pages/privacy_policies/privacy%20policies.dart';
+import 'package:muevete_paquete/core/privacy_policies/privacy%20policies.dart';
+import 'package:muevete_paquete/core/users/ui/create_account/create_account.dart';
 import 'package:muevete_paquete/widgets/widget.dart';
 import 'package:sizer/sizer.dart';
 

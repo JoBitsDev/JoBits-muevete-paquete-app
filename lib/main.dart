@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
-import 'package:muevete_paquete/core/pages/landing_page/landing_page.dart';
+import 'package:muevete_paquete/modules/landing_page/landing_page.dart';
 import 'package:muevete_paquete/utils/services/rest_api_service.dart';
 
 void main() {

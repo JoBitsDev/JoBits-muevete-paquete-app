@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:muevete_paquete/core/pages/delivery_package/deliveryPackageController.dart';
+import 'package:muevete_paquete/modules/delivery_package/deliveryPackageController.dart';
 import 'package:muevete_paquete/widgets/widget.dart';
 
 class DeliveryPackage extends GetResponsiveView<DeliveryPackageController> {

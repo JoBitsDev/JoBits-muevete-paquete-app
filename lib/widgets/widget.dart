@@ -6,12 +6,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:muevete_paquete/constants/assest_path.dart';
-import 'package:muevete_paquete/core/pages/delivery_package/deliveryPackage.dart';
-import 'package:muevete_paquete/core/pages/landing_page/landing_page.dart';
-import 'package:muevete_paquete/core/pages/login/framework/login.dart';
-import 'package:muevete_paquete/core/pages/privacy_policies/privacy%20policies.dart';
-import 'package:muevete_paquete/core/pages/send_package/send_package.dart';
-import 'package:muevete_paquete/core/pages/term_and_conditions/term_Condition.dart';
+import 'package:muevete_paquete/core/privacy_policies/privacy%20policies.dart';
+import 'package:muevete_paquete/core/term_and_conditions/term_Condition.dart';
+import 'package:muevete_paquete/core/users/ui/login/framework/login.dart';
+import 'package:muevete_paquete/modules/delivery_package/deliveryPackage.dart';
+import 'package:muevete_paquete/modules/landing_page/landing_page.dart';
+import 'package:muevete_paquete/modules/send_package/send_package.dart';
 
 import 'package:url_launcher/url_launcher.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';

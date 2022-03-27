@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:muevete_paquete/core/pages/create_account/create_account_controller.dart';
 import 'package:sizer/sizer.dart';
 import 'package:get/get.dart';
 import 'create_account_controller.dart';
