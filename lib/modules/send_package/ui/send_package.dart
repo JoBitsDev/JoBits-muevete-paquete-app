@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:muevete_paquete/modules/send_package/send_package_controller.dart';
+import 'package:muevete_paquete/modules/send_package/ui/send_package_controller.dart';
 import 'package:muevete_paquete/widgets/widget.dart';
 import 'package:get/get.dart';
 
