@@ -11,10 +11,12 @@ class CreateAccountController extends GetxController {
       passwordController,
       repeatPasswordController,
       emailController;
+
   var name = '';
   var password = '';
   var repeatPassword = '';
   var email = '';
+
   @override
   void onInit() {
     nameController = TextEditingController();
