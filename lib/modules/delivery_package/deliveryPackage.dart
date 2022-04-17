@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:muevete_paquete/modules/delivery_package/deliveryPackageController.dart';
+import 'package:muevete_paquete/widgets/circle_avatar_app_bar.dart';
+import 'package:muevete_paquete/widgets/drawer_menu.dart';
+import 'package:muevete_paquete/widgets/logo_app.dart';
+import 'package:muevete_paquete/widgets/side_menu.dart';
 import 'package:muevete_paquete/widgets/widget.dart';
 
 class DeliveryPackage extends GetResponsiveView<DeliveryPackageController> {
-  @override
-  Widget? phone();
-  Widget? tablet();
-  Widget? desktop();
-  Widget? watch();
+  VoidCallback itemName;
 
-  DeliveryPackage() {
+  String onTap;
+
+  DeliveryPackage(this.itemName, this.onTap, {Key? key}) : super(key: key) {
     Get.put(DeliveryPackageController());
   }
   @override
@@ -27,9 +29,9 @@ class DeliveryPackage extends GetResponsiveView<DeliveryPackageController> {
                   child: CircleAvatarAppBar(),
                 ),
               ],
-              title: logoApp(),
+              title: LogoApp(onTap, itemName),
             ),
-            drawer: const DrawerMenu(),
+            drawer: SideMenu(),
             body: SingleChildScrollView(
               child: Center(
                 child: Container(
@@ -38,7 +40,7 @@ class DeliveryPackage extends GetResponsiveView<DeliveryPackageController> {
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(5.0),
-                    boxShadow: <BoxShadow>[
+                    boxShadow: const <BoxShadow>[
                       BoxShadow(
                           color: Colors.black26,
                           blurRadius: 6.0,
@@ -53,9 +55,6 @@ class DeliveryPackage extends GetResponsiveView<DeliveryPackageController> {
                     children: [
                       SizedBox(
                           height: MediaQuery.of(context).size.height * 0.01),
-                      Center(
-                        child: StepPage(),
-                      ),
                       SizedBox(
                           height: MediaQuery.of(context).size.height * 0.5),
                       Row(
@@ -78,11 +77,11 @@ class DeliveryPackage extends GetResponsiveView<DeliveryPackageController> {
                 ),
               ),
             ),
-            floatingActionButton: Container(
+            floatingActionButton: SizedBox(
               height: MediaQuery.of(context).size.height * 1,
               child: const WhatsappButton(),
             ),
-            persistentFooterButtons: [
+            persistentFooterButtons: const [
               CreateFooter(),
             ]),
       ],

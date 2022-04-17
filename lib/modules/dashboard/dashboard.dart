@@ -1,26 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:muevete_paquete/widgets/circle_avatar_app_bar.dart';
+import 'package:muevete_paquete/widgets/drawer_menu.dart';
+import 'package:muevete_paquete/widgets/logo_app.dart';
+import 'package:muevete_paquete/widgets/side_menu.dart';
 
 import 'package:muevete_paquete/widgets/widget.dart';
 
 import 'dashboard_controller.dart';
 
 class Dashboard extends GetResponsiveView<DashboardController> {
-  @override
-  Widget? phone();
-  Widget? tablet();
-  Widget? desktop();
-  Widget? watch();
+  VoidCallback itemName;
 
-  Dashboard() {
+  String onTap;
+
+  Dashboard(this.itemName, this.onTap, {Key? key}) : super(key: key) {
     Get.put(DashboardController());
-  }
 
-  @override
-  Widget build(BuildContext context) {
-    return Stack(
-      children: <Widget>[
-        Scaffold(
+    @override
+    Widget build(BuildContext context) {
+      return Stack(
+        children: <Widget>[
+          Scaffold(
             appBar: AppBar(
               iconTheme: IconThemeData(color: Colors.black),
               backgroundColor: Colors.white70,
@@ -30,9 +31,9 @@ class Dashboard extends GetResponsiveView<DashboardController> {
                   child: CircleAvatarAppBar(),
                 ),
               ],
-              title: logoApp(),
+              title: LogoApp(onTap, itemName),
             ),
-            drawer: const DrawerMenu(),
+            drawer: const SideMenu(),
             body: Container(
               decoration: BoxDecoration(color: Colors.grey.shade200),
               child: Column(
@@ -64,7 +65,7 @@ class Dashboard extends GetResponsiveView<DashboardController> {
                       ),
                     ],
                   ),
-                  CardsServicesHorizontal(),
+                  CardsServicesHorizontal(itemName, onTap)
                 ],
               ),
             ),
@@ -72,10 +73,12 @@ class Dashboard extends GetResponsiveView<DashboardController> {
               height: MediaQuery.of(context).size.height * 1,
               child: const WhatsappButton(),
             ),
-            persistentFooterButtons: [
+            persistentFooterButtons: const [
               CreateFooter(),
-            ]),
-      ],
-    );
+            ],
+          ),
+        ],
+      );
+    }
   }
 }

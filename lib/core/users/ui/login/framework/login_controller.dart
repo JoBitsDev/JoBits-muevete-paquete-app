@@ -13,6 +13,10 @@ class LoginController extends GetxController {
   late TextEditingController nameController, passwordController;
   var name = '';
   var password = '';
+
+  late String itemName;
+
+  late VoidCallback onTap;
   @override
   void onInit() {
     // Simulating obtaining the user name from some local storage
@@ -61,7 +65,7 @@ class LoginController extends GetxController {
       showSuccess("User was successfully login!");
       nameController.text = "";
       passwordController.text = "";
-      Get.to(Dashboard());
+      Get.to(Dashboard(onTap, itemName));
       TextField(controller: TextEditingController());
       TextField(controller: TextEditingController());
     } else {

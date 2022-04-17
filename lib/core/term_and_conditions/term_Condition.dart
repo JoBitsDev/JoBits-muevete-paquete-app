@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:muevete_paquete/widgets/circle_avatar_app_bar.dart';
+import 'package:muevete_paquete/widgets/drawer_menu.dart';
+import 'package:muevete_paquete/widgets/logo_app.dart';
+import 'package:muevete_paquete/widgets/side_menu.dart';
 import 'package:muevete_paquete/widgets/widget.dart';
 
 class TermConditionPage extends StatefulWidget {
@@ -8,6 +12,10 @@ class TermConditionPage extends StatefulWidget {
 
 class _TermConditionPageState extends State<TermConditionPage> {
   bool isChecked = false;
+
+  late VoidCallback itemName;
+
+  late String onTap;
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
@@ -31,10 +39,10 @@ class _TermConditionPageState extends State<TermConditionPage> {
                   ],
                 ),
               ],
-              title: logoApp(),
+              title: LogoApp(onTap, itemName),
             ),
           ),
-          drawer: const DrawerMenu(),
+          drawer: SideMenu(),
           body: SingleChildScrollView(
             padding: EdgeInsets.all(20.0),
             child: Column(
@@ -44,7 +52,7 @@ class _TermConditionPageState extends State<TermConditionPage> {
                     textAlign: TextAlign.start,
                     text: TextSpan(
                       style: TextStyle(color: Colors.black),
-                      children: <TextSpan>[
+                      children: const <TextSpan>[
                         TextSpan(
                             text:
                                 'Sunt nulla minim dolore irure dolore nulla et voluptate occaecat excepteur laboris. Esse sit nisi pariatur aute. Ipsum in Lorem dolore tempor est adipisicing excepteur quis.'
