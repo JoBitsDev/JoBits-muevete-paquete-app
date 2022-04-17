@@ -10,12 +10,8 @@ import 'package:sizer/sizer.dart';
 import 'login_controller.dart';
 
 class LoginWeb extends GetResponsiveView<LoginController> {
-  VoidCallback itemName;
-
-  String onTap;
-
   @override
-  LoginWeb(this.itemName, this.onTap, {Key? key}) : super(key: key) {
+  LoginWeb({Key? key}) : super(key: key) {
     Get.put(LoginController());
   }
 
@@ -48,7 +44,7 @@ class LoginWeb extends GetResponsiveView<LoginController> {
                             child: Column(
                               children: <Widget>[
                                 Center(
-                                  child: LogoApp(onTap, itemName),
+                                  child: LogoApp(),
                                 ),
                               ],
                             ),
@@ -165,29 +161,27 @@ class LoginWeb extends GetResponsiveView<LoginController> {
     return StreamBuilder(
       builder: (BuildContext context, AsyncSnapshot snapshot) {
         return Container(
-          child: Container(
-            width: MediaQuery.of(context).size.width * 0.8,
-            padding: EdgeInsets.symmetric(horizontal: 25.0),
-            child: Column(
-              children: <Widget>[
-                TextFormField(
-                  controller: controller.nameController,
-                  onSaved: (value) {
-                    controller.name = value!;
-                  },
-                  validator: (value) {
-                    return controller.validateName(value!);
-                  },
-                  decoration: InputDecoration(
-                    icon: Icon(Icons.account_circle_outlined,
-                        color: Color(0xFF00B0FF)),
-                    hintText: 'Nombre',
-                    labelText: 'Usuario',
-                    errorText: snapshot.error?.toString(),
-                  ),
+          width: MediaQuery.of(context).size.width * 0.8,
+          padding: EdgeInsets.symmetric(horizontal: 25.0),
+          child: Column(
+            children: <Widget>[
+              TextFormField(
+                controller: controller.nameController,
+                onSaved: (value) {
+                  controller.name = value!;
+                },
+                validator: (value) {
+                  return controller.validateName(value!);
+                },
+                decoration: InputDecoration(
+                  icon: Icon(Icons.account_circle_outlined,
+                      color: Color(0xFF00B0FF)),
+                  hintText: 'Nombre',
+                  labelText: 'Usuario',
+                  errorText: snapshot.error?.toString(),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         );
       },

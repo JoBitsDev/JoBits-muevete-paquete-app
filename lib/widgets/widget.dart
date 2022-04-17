@@ -66,12 +66,7 @@ class WhatsappButtonMobile extends StatelessWidget {
 }
 
 class CardsServicesHorizontal extends StatelessWidget {
-  final VoidCallback itemName;
-
-  final String onTap;
-
-  const CardsServicesHorizontal(this.itemName, this.onTap, {Key? key})
-      : super(key: key);
+  const CardsServicesHorizontal({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -91,7 +86,7 @@ class CardsServicesHorizontal extends StatelessWidget {
                   TextButton(
                     onPressed: () {
                       Get.to(
-                        CreatePackage(onTap, itemName),
+                        CreatePackage(),
                       );
                     },
                     child: Text(
@@ -167,15 +162,13 @@ class CreateFooter extends StatelessWidget {
               Container(
                 margin: EdgeInsets.only(left: 20.0),
               ),
-              Container(
-                child: TextButton(
-                    onPressed: () {
-                      Get.to(
-                        PrivacyPoliciesPage(),
-                      );
-                    },
-                    child: Text('Políticas de privacidad')),
-              ),
+              TextButton(
+                  onPressed: () {
+                    Get.to(
+                      PrivacyPoliciesPage(),
+                    );
+                  },
+                  child: Text('Políticas de privacidad')),
               Container(
                 margin: EdgeInsets.only(left: 20.0),
                 child: TextButton(

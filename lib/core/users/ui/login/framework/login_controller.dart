@@ -65,7 +65,7 @@ class LoginController extends GetxController {
       showSuccess("User was successfully login!");
       nameController.text = "";
       passwordController.text = "";
-      Get.to(Dashboard(onTap, itemName));
+      Get.to(Dashboard());
       TextField(controller: TextEditingController());
       TextField(controller: TextEditingController());
     } else {

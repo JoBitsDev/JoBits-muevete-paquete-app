@@ -14,9 +14,6 @@ class PrivacyPoliciesPage extends StatefulWidget {
 class _PrivacyPoliciesPageState extends State<PrivacyPoliciesPage> {
   bool isChecked = false;
 
-  late VoidCallback itemName;
-
-  late String onTap;
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
@@ -40,7 +37,7 @@ class _PrivacyPoliciesPageState extends State<PrivacyPoliciesPage> {
                   ],
                 ),
               ],
-              title: LogoApp(onTap, itemName),
+              title: LogoApp(),
             ),
           ),
           drawer: SideMenu(),

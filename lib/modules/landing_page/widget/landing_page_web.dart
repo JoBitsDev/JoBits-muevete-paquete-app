@@ -6,11 +6,7 @@ import 'package:muevete_paquete/widgets/top_navigation_bar.dart';
 import 'package:muevete_paquete/widgets/widget.dart';
 
 class LandingPageWeb extends StatelessWidget {
-  VoidCallback itemName;
-
-  String onTap;
-
-  LandingPageWeb(this.itemName, this.onTap, {Key? key}) : super(key: key);
+  LandingPageWeb({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +23,7 @@ class LandingPageWeb extends StatelessWidget {
               delay: Duration(milliseconds: 2000),
               child: Container(
                 margin: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
-                child: Flexible(child: ElementsBody(onTap, itemName)),
+                child: Flexible(child: ElementsBody()),
               ),
             ),
           ),

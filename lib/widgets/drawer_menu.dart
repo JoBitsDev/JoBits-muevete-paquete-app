@@ -4,11 +4,7 @@ import 'package:get/get.dart';
 import 'package:muevete_paquete/modules/create_package/ui/create_package.dart';
 
 class DrawerMenu extends StatelessWidget {
-  final VoidCallback itemName;
-
-  final String onTap;
-
-  const DrawerMenu(this.itemName, this.onTap, {Key? key}) : super(key: key);
+  const DrawerMenu({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +25,7 @@ class DrawerMenu extends StatelessWidget {
             leading: Icon(FontAwesomeIcons.boxes, color: Colors.blue.shade500),
             title: const Text('Crear Paquete'),
             onTap: () {
-              Get.to(CreatePackage(onTap, itemName));
+              Get.to(CreatePackage());
             },
           ),
           ListTile(

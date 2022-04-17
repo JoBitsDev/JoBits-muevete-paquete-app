@@ -9,12 +9,8 @@ import 'package:muevete_paquete/widgets/logo_app_mobile.dart';
 import 'login_controller.dart';
 
 class LoginMobile extends GetResponsiveView<LoginController> {
-  VoidCallback onTap;
-
-  String itemName;
-
   @override
-  LoginMobile(this.itemName, this.onTap, {Key? key}) : super(key: key) {
+  LoginMobile({Key? key}) : super(key: key) {
     Get.put(LoginController());
   }
 
@@ -38,9 +34,9 @@ class LoginMobile extends GetResponsiveView<LoginController> {
                     Center(
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
+                        children: const <Widget>[
                           Center(
-                            child: LogoAppMobile(onTap, itemName),
+                            child: LogoAppMobile(),
                           ),
                         ],
                       ),

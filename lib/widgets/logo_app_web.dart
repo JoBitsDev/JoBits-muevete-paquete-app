@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:muevete_paquete/modules/landing_page/widget/landing_page_mobile.dart';
+import 'package:muevete_paquete/modules/landing_page/widget/landing_page_web.dart';
 import 'package:muevete_paquete/widgets/widget.dart';
 
-class LogoAppMobile extends StatelessWidget {
-  const LogoAppMobile({Key? key}) : super(key: key);
+class LogoAppWeb extends StatelessWidget {
+  const LogoAppWeb({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -12,12 +12,12 @@ class LogoAppMobile extends StatelessWidget {
       children: <Widget>[
         TextButton(
           onPressed: () {
-            Get.offAll(LandingPageMobile());
+            Get.offAll(LandingPageWeb());
           },
           child: Flexible(
             child: CustomText(
               color: Color(0xFF00B0FF),
-              size: 28,
+              size: 38,
               text: 'MUEVETE PAQUETE',
               weight: FontWeight.bold,
             ),

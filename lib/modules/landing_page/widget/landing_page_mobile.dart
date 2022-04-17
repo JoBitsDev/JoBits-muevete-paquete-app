@@ -10,10 +10,7 @@ import 'package:muevete_paquete/widgets/widget.dart';
 import '../landing_page_controller.dart';
 
 class LandingPageMobile extends GetResponsiveView<LandingPageController> {
-  final String itemName;
-  final VoidCallback onTap;
-
-  LandingPageMobile(this.itemName, this.onTap, {Key? key}) : super(key: key);
+  LandingPageMobile({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +24,7 @@ class LandingPageMobile extends GetResponsiveView<LandingPageController> {
           SizedBox(height: 5.0),
           FadeInDown(
             delay: Duration(milliseconds: 2000),
-            child: ElementsBodyMobile(itemName, onTap),
+            child: ElementsBodyMobile(),
           ),
         ]),
       ),

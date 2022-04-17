@@ -39,7 +39,7 @@ class _TermConditionPageState extends State<TermConditionPage> {
                   ],
                 ),
               ],
-              title: LogoApp(onTap, itemName),
+              title: LogoApp(),
             ),
           ),
           drawer: SideMenu(),

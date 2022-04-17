@@ -8,11 +8,7 @@ import 'package:muevete_paquete/widgets/side_menu.dart';
 import 'package:muevete_paquete/widgets/widget.dart';
 
 class DeliveryPackage extends GetResponsiveView<DeliveryPackageController> {
-  VoidCallback itemName;
-
-  String onTap;
-
-  DeliveryPackage(this.itemName, this.onTap, {Key? key}) : super(key: key) {
+  DeliveryPackage({Key? key}) : super(key: key) {
     Get.put(DeliveryPackageController());
   }
   @override
@@ -29,7 +25,7 @@ class DeliveryPackage extends GetResponsiveView<DeliveryPackageController> {
                   child: CircleAvatarAppBar(),
                 ),
               ],
-              title: LogoApp(onTap, itemName),
+              title: LogoApp(),
             ),
             drawer: SideMenu(),
             body: SingleChildScrollView(

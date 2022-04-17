@@ -7,11 +7,7 @@ import 'package:muevete_paquete/widgets/widget.dart';
 import 'package:get/get.dart';
 
 class CreatePackage extends GetResponsiveView<CreatePackageController> {
-  VoidCallback onTap;
-
-  String itemName;
-
-  CreatePackage(this.itemName, this.onTap, {Key? key}) : super(key: key) {
+  CreatePackage({Key? key}) : super(key: key) {
     Get.put(CreatePackageController());
   }
   final packagetKey = new GlobalKey<FormState>();
@@ -151,7 +147,7 @@ class CreatePackage extends GetResponsiveView<CreatePackageController> {
         height: MediaQuery.of(context).size.height * 1,
         child: const WhatsappButton(),
       ),
-      persistentFooterButtons: [
+      persistentFooterButtons: const [
         CreateFooter(),
       ],
     );
@@ -255,7 +251,7 @@ class CreatePackage extends GetResponsiveView<CreatePackageController> {
       elevation: 0.0,
       color: Colors.blue,
       onPressed: () {
-        Get.to(DeliveryPackage(onTap, itemName));
+        Get.to(DeliveryPackage());
       },
     );
   }

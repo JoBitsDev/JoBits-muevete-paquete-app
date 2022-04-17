@@ -5,10 +5,7 @@ import 'package:muevete_paquete/core/users/ui/login/framework/login.dart';
 import 'package:muevete_paquete/widgets/widget.dart';
 
 class ElementsBodyMobile extends StatelessWidget {
-  String itemName;
-  VoidCallback onTap;
-
-  ElementsBodyMobile(this.itemName, this.onTap, {Key? key}) : super(key: key);
+  const ElementsBodyMobile({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +49,7 @@ class ElementsBodyMobile extends StatelessWidget {
                 color: Color(0xFF00B0FF),
                 textColor: Colors.white,
                 onPressed: () {
-                  Get.to(Login(onTap, itemName));
+                  Get.to(Login());
                 },
               ),
             ],

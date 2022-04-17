@@ -8,18 +8,19 @@ import 'package:responsive_builder/responsive_builder.dart';
 import 'landing_page_controller.dart';
 
 class LandingPage extends GetResponsiveView<LandingPageController> {
-  LandingPage(this.itemName, this.onTap) {
+  LandingPage(this.itemName, this.onTap, {Key? key}) : super(key: key) {
     Get.put(LandingPageController());
   }
   final String itemName;
   final VoidCallback onTap;
 
+  @override
   Widget build(BuildContext context) {
     return Expanded(
       child: ScreenTypeLayout(
-        mobile: LandingPageMobile(itemName, onTap),
-        desktop: LandingPageWeb(onTap, itemName),
-        tablet: LandingPageWeb(onTap, itemName),
+        mobile: LandingPageMobile(),
+        desktop: LandingPageWeb(),
+        tablet: LandingPageWeb(),
       ),
     );
   }

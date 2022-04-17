@@ -5,11 +5,7 @@ import 'package:muevete_paquete/core/users/ui/login/framework/login.dart';
 import 'package:muevete_paquete/widgets/widget.dart';
 
 class ElementsBody extends StatelessWidget {
-  String itemName;
-
-  VoidCallback onTap;
-
-  ElementsBody(this.itemName, this.onTap, {Key? key}) : super(key: key);
+  ElementsBody({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -57,12 +53,10 @@ class ElementsBody extends StatelessWidget {
                     ),
                     SizedBox(height: 30.0),
                     MaterialButton(
-                      child: Positioned(
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 10.0, vertical: 15.0),
-                          child: const Text('Comenzar'),
-                        ),
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 10.0, vertical: 15.0),
+                        child: const Text('Comenzar'),
                       ),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(5.0)),
@@ -70,7 +64,7 @@ class ElementsBody extends StatelessWidget {
                       color: Color(0xFF00B0FF),
                       textColor: Colors.white,
                       onPressed: () {
-                        Get.to(Login(onTap, itemName));
+                        Get.to(Login());
                       },
                     ),
                   ],

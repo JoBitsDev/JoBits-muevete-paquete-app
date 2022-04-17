@@ -13,19 +13,13 @@ import 'package:sizer/sizer.dart';
 import 'login_controller.dart';
 
 class Login extends GetResponsiveView<LoginController> {
-  String onTap;
-
-  VoidCallback itemName;
-
   @override
-  Login(this.itemName, this.onTap, {Key? key}) : super(key: key) {
+  Login({Key? key}) : super(key: key) {
     Get.put(LoginController());
   }
 
   @override
   Widget build(BuildContext context) {
-    return ScreenTypeLayout(
-        mobile: LoginMobile(onTap, itemName),
-        desktop: LoginWeb(itemName, onTap));
+    return ScreenTypeLayout(mobile: LoginMobile(), desktop: LoginWeb());
   }
 }
